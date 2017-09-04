@@ -1,0 +1,32 @@
+/*CSS Style sheet for burglary map refactor*/
+
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+    background-color: #0e671f
+}
+
+#map {
+    height: 97%
+}
+
+.leaflet-popup-content-wrapper {
+    background: #fff8fc;
+    color: #000002;
+    font: 15px Serifa BT;
+    line-height: 22px;
+    border: 1px double #00008b
+}
+
+.leaflet-popup-tip-container {
+    width: 10px;
+    height: 15px
+}
+
+.leaflet-popup-tip {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2c3e50
+        }
+
