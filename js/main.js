@@ -108,8 +108,8 @@ county = $.getJSON("assets/CntyBound.json", function(data) {
     
 //    mcds = Insert mcdbnds.json call here
 mcds = $.getJSON("assets/McdBound.json", function(data) {
-        console.log("success")
-});
+        
+})
     
     bp = L.geoJson(burg, {
         pointToLayer: function (e, t) {
