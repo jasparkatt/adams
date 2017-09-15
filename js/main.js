@@ -98,13 +98,18 @@ var cafeIcon = L.AwesomeMarkers.icon({
         Satellite: aerial,
         "Open Street Map": OSM
     },
-//    county = Insert cntybnds.json call here
+
     
-    co = L.geoJson(county, {
-        style: myStyle
-    }).addTo(map),
+county = $.getJSON("assets/CntyBound.json", function(data) {
+        var co = L.geoJson(data, {
+            style: myStyle
+        }).addTo(map);
+    });
     
 //    mcds = Insert mcdbnds.json call here
+mcds = $.getJSON("assets/McdBound.json", function(data) {
+        console.log("success")
+});
     
     bp = L.geoJson(burg, {
         pointToLayer: function (e, t) {
