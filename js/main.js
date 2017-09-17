@@ -103,21 +103,7 @@ var cafeIcon = L.AwesomeMarkers.icon({
         "Open Street Map": OSM
     };
 
-    
-$.getJSON("assets/CntyBound.json", function (data) {
-            L.geoJson(data, {
-            style: myStyle
-        }).addTo(map);
-    });
-    
-//    mcds = Insert mcdbnds.json call here
-var mc = $.getJSON("assets/McdBound.json", function (data) {
-            L.geoJson(data, {
-            style: myStyle2,
-            onEachFeature: onEachFeature_Polygon    
-    });
-}),
-    onEachFeature_Polygon = function (e, t) {
+onEachFeature_Polygon = function (e, t) {
             var o = e.properties.cent_lat,
                 r = e.properties.cent_lon,
                 s = new L.LatLng(o, r);
@@ -131,6 +117,35 @@ var mc = $.getJSON("assets/McdBound.json", function (data) {
               map.setView([44, -89.701], 10)
             })
           };
+
+
+$.getJSON("assets/CntyBound.json", function (data) {
+            L.geoJson(data, {
+            style: myStyle
+        }).addTo(map);
+    });
+
+//    mcds = Insert mcdbnds.json call here
+var mc = $.getJSON("assets/McdBound.json", function (data) {
+            L.geoJson(data, {
+            style: myStyle2,
+            onEachFeature: onEachFeature_Polygon
+    });
+});
+//    onEachFeature_Polygon = function (e, t) {
+//            var o = e.properties.cent_lat,
+//                r = e.properties.cent_lon,
+//                s = new L.LatLng(o, r);
+//            t.setStyle(defaultStyle), e.properties && e.properties.MCD && t.bindPopup("<b>" + e.properties.MCD + "</b><br />2012: " + e.properties.Rate_12 + "/1000 Residents<br/>2013: " + e.properties.Rate_13 + "/1000 Residents<br/>2014: " + e.properties.Rate_14 + "/1000 Residents<br/>2015: " + e.properties.Rate_15 + "/1000 Residents<br/>2016: " + e.properties.Rate_16 + "/1000 Residents"), t.on("mouseover", function (e) {
+//              t.setStyle(highlightStyle), t.openPopup(s)
+//            }), t.on("mouseout", function (e) {
+//              t.setStyle(defaultStyle), t.closePopup()
+//            }), t.on("click", function (e) {
+//              map.fitBounds(e.target.getBounds())
+//            }), t.on("dblclick", function (e) {
+//              map.setView([44, -89.701], 10)
+//            })
+//          };
 L.control.layers(baseLayers, {
   "Townships": mc  
 }).addTo(map);
