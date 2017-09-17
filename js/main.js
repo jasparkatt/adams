@@ -1,7 +1,10 @@
 
 var bingGeocoder = null,
     mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>,Adams Co. GIS';
-mbUrl = "https://a.tiles.mapbox.com/v4/jasparkatt.7de0c82e/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA", mbUr2 = "https://a.tiles.mapbox.com/v4/jasparkatt.mc7mh1f5/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA", mbUr3 = "https://a.tiles.mapbox.com/v4/jasparkatt.mg637mmi/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA", mbUr4 = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+mbUrl = "https://a.tiles.mapbox.com/v4/jasparkatt.7de0c82e/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA";
+mbUr2 = "https://a.tiles.mapbox.com/v4/jasparkatt.mc7mh1f5/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA";
+mbUr3 = "https://a.tiles.mapbox.com/v4/jasparkatt.mg637mmi/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFzcGFya2F0dCIsImEiOiJ0dFVNWUxvIn0.c2iL93m2nRg0gnqSlm5bhA";
+mbUr4 = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 var myStyle = {
     color: "#994c00",
     weight: 4,
@@ -12,9 +15,9 @@ var myStyle = {
     myStyle2 = {
         color: "#CC6600",
         weight: 2,
-        opacity: .65,
+        opacity: 0.65,
         dashArray: "5",
-        fillOpacity: .1,
+        fillOpacity: 0.1,
         fillColor: "none"
     },
     myStyle3 = {
@@ -22,23 +25,23 @@ var myStyle = {
         fillColor: "#0e671f",
         color: "#bbbbce",
         weight: 1,
-        opacity: .8,
+        opacity: 0.8,
         fillOpacity: 1
     },
     defaultStyle = {
         color: "#CC6600",
         weight: 2,
-        opacity: .6,
+        opacity: 0.6,
         dashArray: "5",
-        fillOpacity: .1,
+        fillOpacity: 0.1,
         fillColor: "#bcd4fd"
     },
     highlightStyle = {
         color: "#caaa00",
         weight: 3.5,
-        opacity: .6,
+        opacity: 0.6,
         dashArray: "7",
-        fillOpacity: .25,
+        fillOpacity: 0.25,
         fillColor: "#caaa00"
     },
     grayscale = L.tileLayer(mbUrl, {
@@ -52,7 +55,8 @@ var myStyle = {
 aerial = L.tileLayer(mbUr3, {
     id: "jasparkatt.mg637mmi",
     attribution: mbAttr
-}), OSM = L.tileLayer(mbUr4, {
+});
+OSM = L.tileLayer(mbUr4, {
     attribution: mbAttr
 });
 var cafeIcon = L.AwesomeMarkers.icon({
@@ -100,14 +104,14 @@ var cafeIcon = L.AwesomeMarkers.icon({
     };
 
     
-$.getJSON("assets/CntyBound.json", function(data) {
+$.getJSON("assets/CntyBound.json", function (data) {
             L.geoJson(data, {
             style: myStyle
         }).addTo(map);
     });
     
 //    mcds = Insert mcdbnds.json call here
-var mc = $.getJSON("assets/McdBound.json", function(data) {
+var mc = $.getJSON("assets/McdBound.json", function (data) {
             L.geoJson(data, {
             style: myStyle2,
             onEachFeature: onEachFeature_Polygon    
